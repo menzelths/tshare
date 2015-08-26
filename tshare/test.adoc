@@ -1,0 +1,9 @@
+= Test
+:stem:
+
+Write inline mathematics like \(a^2 + b^2 = c^2 \).
+
+Write display mathematics like this
+\[
+\int_0^1 x^n= \frac{1}{n+1}
+\]
