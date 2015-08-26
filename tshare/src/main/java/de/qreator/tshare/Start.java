@@ -9,6 +9,7 @@ public class Start {
 		Vertx vertx = Vertx.vertx();
 		vertx.deployVerticle(VerticleClass.class.getName());
 		System.out.println("Tesgt232");
+
 	}
 
 }
