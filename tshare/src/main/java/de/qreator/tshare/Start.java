@@ -8,7 +8,7 @@ public class Start {
 		// TODO Auto-generated method stub
 		Vertx vertx = Vertx.vertx();
 		vertx.deployVerticle(VerticleClass.class.getName());
-		System.out.println("Tesgt232456");
+		System.out.println("Tesgt2324567");
 
 	}
 
