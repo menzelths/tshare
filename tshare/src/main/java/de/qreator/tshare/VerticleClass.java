@@ -12,7 +12,7 @@ public class VerticleClass extends AbstractVerticle {
 
 	public  void start(Future<Void> fut) {
 		// TODO Auto-generated method stub
-		System.out.println("Es geht!");
+		System.out.println("Es geht doch!");
 		Vertx vertx = Vertx.vertx();
 		HttpServer server = vertx.createHttpServer();
 
