@@ -1,0 +1,51 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="marked-import.html">
+
+
+<dom-module id="mark-down"> 
+<template>
+<div id='markdown'><content></content></div>
+
+</template> 
+<style>:host {
+        display: block;
+        border: 1px solid red;
+        padding: 50px;
+      }</style>
+
+</script>
+     
+<script>
+    Polymer({
+      is: "mark-down",
+      ready: function(){
+    	  var content=this.$.markdown.innerHTML;
+    	  //var parsed=marked(this.trim(content));
+    	  var options = Opal.hash2([ 'attributes'], { attributes: ['showtitle']});
+    	  var parsed=Opal.Asciidoctor.$convert(this.trim(content), options);
+    	  this.$.markdown.innerHTML=parsed;    
+    	  renderMathInElement(this.$.markdown,{
+              delimiters: [
+                           {left: "$$", right: "$$", display: true},
+                           {left: "\\[", right: "\\]", display: true},
+                           {left: "\\$", right: "\\$", display: false},
+                           {left: "\\(", right: "\\)", display: false}
+                       ]
+                   });
+    	  },
+trim: function(str) {
+    // two spaces for tabs as a guess - we don't want to get into the business
+    // of trying to detect tab sizes.
+    var lines  = str.replace(/\t/g, '  ').split('\n');
+    var indent = lines.reduce(function(prev, line) {
+      if (/^\s*$/.test(line)) return prev;  // Completely ignore blank lines.
+      var lineIndent = line.match(/^(\s*)/)[0].length;
+      if (prev === null) return lineIndent;
+      return lineIndent < prev ? lineIndent : prev;
+    }, null);
+    return lines.map(function(l) { return l.substr(indent); }).join('\n');
+    return str.replace(/^[^\S\n]+/gm, '');
+  },
+    });
+    
+  </script> </dom-module>

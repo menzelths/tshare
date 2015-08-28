@@ -1,10 +1,556 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-Das ist ein Test
-</body>
+  <head>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="proto-element.html">
+  </head>
+  <body>
+    <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+ <mark-down>  
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+:stem:
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+[latexmath]
+++++
+\[
+x = y^2+\int_a^b \! f(x) dx
+\]
+++++
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert stem:[x^2-x^3] AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoc-to-pdf-example/README.adoc[asciidoc-to-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoc-site-example/README.adoc[asciidoc-site-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Maven plugin.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+
+---- 
+
+== Updating Asciidoctor Maven plugin version
+
+In case it is required to test a specific version of the plugin (e.g. local SNAPSHOT version), a tool has been included to update the version in all examples.
+To change the plugin's version follow the next steps:
+
+</mark-down>  
+
+  </body>
 </html>

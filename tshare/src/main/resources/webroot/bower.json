@@ -1,0 +1,16 @@
+{
+  "name": "webroot",
+  "version": "0.0.0",
+  "homepage": "https://github.com/menzelths/tshare",
+  "authors": [
+    "Thomas Menzel <menzelths@yahoo.de>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
