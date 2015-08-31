@@ -2,6 +2,7 @@
 <link rel="import" href="marked-import.html">
 
 
+
 <dom-module id="mark-down"> 
 <template>
 <div id='markdown'><content></content></div>
@@ -14,16 +15,18 @@
       }</style>
 
 </script>
+
      
 <script>
+
     Polymer({
       is: "mark-down",
+      _setText: function(msg){
+    	  this.$.markdown.innerHTML=msg;
+      },
       ready: function(){
-    	  var content=this.$.markdown.innerHTML;
-    	  //var parsed=marked(this.trim(content));
-    	  var options = Opal.hash2([ 'attributes'], { attributes: ['showtitle']});
-    	  var parsed=Opal.Asciidoctor.$convert(this.trim(content), options);
-    	  this.$.markdown.innerHTML=parsed;    
+    	  
+    	  
     	  renderMathInElement(this.$.markdown,{
               delimiters: [
                            {left: "$$", right: "$$", display: true},
@@ -32,8 +35,24 @@
                            {left: "\\(", right: "\\)", display: false}
                        ]
                    });
+    	  var content=this.$.markdown.innerHTML;
+    	  //var parsed=marked(this.trim(content));
+    	  var options = Opal.hash2([ 'attributes'], { attributes: ['showtitle']});
+    	  var parsed=Opal.Asciidoctor.$convert(this.trim(content), options);
+    	 // var parsed=content;
+    	  this.$.markdown.innerHTML=parsed;    
+    	  //if (typeof MathJax != "undefined" && typeof MathJax.Hub != "undefined") 
+    		//  MathJax.Hub.Typeset(this.$.markdown);
+    	  /*renderMathInElement(this.$.markdown,{
+              delimiters: [
+                           {left: "$$", right: "$$", display: true},
+                           {left: "\\[", right: "\\]", display: true},
+                           {left: "\\$", right: "\\$", display: false},
+                           {left: "\\(", right: "\\)", display: false}
+                       ]
+                   });*/
     	  },
-trim: function(str) {
+    trim: function(str) {
     // two spaces for tabs as a guess - we don't want to get into the business
     // of trying to detect tab sizes.
     var lines  = str.replace(/\t/g, '  ').split('\n');
@@ -47,5 +66,5 @@ trim: function(str) {
     return str.replace(/^[^\S\n]+/gm, '');
   },
     });
-    
+
   </script> </dom-module>
