@@ -14,7 +14,16 @@
 	</properties>
 
 	<dependencies>
-
+	<dependency>
+    <groupId>org.webjars.npm</groupId>
+    <artifactId>redux</artifactId>
+    <version>1.0.1</version>
+</dependency>
+<dependency>
+    <groupId>org.webjars.npm</groupId>
+    <artifactId>jquery</artifactId>
+    <version>2.1.4</version>
+</dependency>
 		<dependency>
 			<groupId>io.vertx</groupId>
 			<artifactId>vertx-core</artifactId>
@@ -49,6 +58,53 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+
+       
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack-dependencies</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeGroupIds>org.webjars.npm</includeGroupIds>
+              <outputDirectory>${project.build.directory}/alternateLocation</outputDirectory>
+                 
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+       
+       <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/src/main/resources/webroot</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${project.build.directory}/alternateLocation/META-INF/resources</directory>
+                  
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -82,12 +138,17 @@
 								</transformer>
 							</transformers>
 							<artifactSet>
+							<excludes>
+                  <exclude>org.webjars.npm</exclude>
+                  
+                </excludes>
 							</artifactSet>
 							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+		
 		</plugins>
 	</build>
 
